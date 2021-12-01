@@ -1,11 +1,13 @@
 import { Container } from "inversify";
-import { Bootstrapper } from "./bootstrapper";
-import { GlobalTypes, ISample } from "./interfaces";
-import "reflect-metadata";
+import { FormattersBootstrapper } from "./formatters/bootstrapper";
+import { GlobalSymbols, ISimpleSample } from "./interfaces";
 
-const container = new Container();
+const container = new Container({ defaultScope: "Singleton" });
 
-Bootstrapper(container);
+FormattersBootstrapper(container);
 
-const sample = container.get<ISample>(GlobalTypes.Sample);
-sample.Run({ message: "This a new message" });
+const sample = container.get<ISimpleSample>(GlobalSymbols.SimpleSample);
+sample.Run({
+  target: "json",
+  value: { message: "this is a simple IoC sample" },
+});
