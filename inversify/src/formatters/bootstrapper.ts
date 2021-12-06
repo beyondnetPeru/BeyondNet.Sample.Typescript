@@ -28,7 +28,7 @@ export const FormattersBootstrapper = (container: Container): void => {
       (context) => (named: string) => ConfigurationSourceFactory(context, named)
     );
 
-  container
-    .bind<ISimpleSample>(GlobalSymbols.SimpleSample)
-    .to(SimpleSampleFormatter);
+  // container
+  //   .bind<ISimpleSample>(GlobalSymbols.SimpleSample)
+  //   .to(SimpleSampleFormatter);
 };
